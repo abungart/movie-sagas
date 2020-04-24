@@ -12,12 +12,15 @@ class MovieList extends Component {
     console.log(this.props.reduxState.moviesReducer);
     return (
       <div>
+        <header className="header">
+          <h1>Movie Saga List</h1>
+        </header>
         <h2>The List Begins Here!</h2>
-        <ul>
+        <div>
           {this.props.reduxState.moviesReducer.map((movieItem) => {
             return <MovieItem key={movieItem.id} movieItem={movieItem} />;
           })}
-        </ul>
+        </div>
       </div>
     );
   }
