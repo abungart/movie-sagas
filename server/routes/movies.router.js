@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const pool = require("..modules/pool");
+const pool = require("../modules/pool");
 
 // GET DATA FROM DATABASE
 router.get("/", (req, res) => {
