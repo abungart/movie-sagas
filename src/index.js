@@ -36,6 +36,8 @@ const moviesReducer = (state = [], action) => {
   switch (action.type) {
     case "SET_MOVIES":
       return action.payload;
+    case "SET_MOVIE_DATA":
+      return action.payload;
     default:
       return state;
   }

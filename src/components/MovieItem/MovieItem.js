@@ -6,6 +6,10 @@ class MovieItem extends Component {
   // Call to item details page
   itemDetails = () => {
     console.log(this.props.movieItem);
+    this.props.dispatch({
+      type: "SET_MOVIE_DATA",
+      payload: this.props.movieItem,
+    });
     this.props.history.push("/data");
   };
 
@@ -25,4 +29,8 @@ class MovieItem extends Component {
   }
 }
 
-export default withRouter(connect()(MovieItem));
+const mapReduxStateToProps = (reduxState) => ({
+  reduxState,
+});
+
+export default withRouter(connect(mapReduxStateToProps)(MovieItem));
