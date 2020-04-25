@@ -2,6 +2,16 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 class MovieData extends Component {
+  homeClick = () => {
+    this.props.dispatch({ type: "GET_MOVIES" });
+    this.props.history.push("/");
+  };
+
+  editClick = () => {
+    console.log("In Edit Button");
+    this.props.history.push("/edit");
+  };
+
   render() {
     const movieItemData = this.props.reduxState.moviesReducer;
 
@@ -10,11 +20,13 @@ class MovieData extends Component {
         <header>
           <h1>Movie Data</h1>
         </header>
+        <button onClick={this.homeClick}>Return To All Movies</button>
         <span>
           <img src={movieItemData.poster} alt={movieItemData.title} />
           <h2>{movieItemData.title}</h2>
           <p>{movieItemData.description}</p>
         </span>
+        <button onClick={this.editClick}>Edit</button>
       </div>
     );
   }
