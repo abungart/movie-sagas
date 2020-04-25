@@ -3,12 +3,16 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
 class EditMovie extends Component {
+  handleGoBack = () => {
+    this.props.history.goBack();
+  };
+
   render() {
     return (
       <div>
         <h1>Edit Movie</h1>
         <button>Submit Changes</button>
-        <button>Cancel</button>
+        <button onClick={this.handleGoBack}>Cancel</button>
       </div>
     );
   }

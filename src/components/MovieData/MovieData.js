@@ -2,6 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 class MovieData extends Component {
+  componentDidMount() {
+    console.log("Data Component Mounted!");
+    this.props.dispatch({ type: "GET_GENRES" });
+  }
+
   homeClick = () => {
     this.props.dispatch({ type: "GET_MOVIES" });
     this.props.history.push("/");
@@ -10,6 +15,10 @@ class MovieData extends Component {
   editClick = () => {
     console.log("In Edit Button");
     this.props.history.push("/edit");
+  };
+
+  deleteClick = () => {
+    console.log("In Delete Button");
   };
 
   render() {
@@ -26,7 +35,8 @@ class MovieData extends Component {
           <h2>{movieItemData.title}</h2>
           <p>{movieItemData.description}</p>
         </span>
-        <button onClick={this.editClick}>Edit</button>
+        <button onClick={this.editClick}>Edit Movie</button>
+        <button onClick={this.deleteClick}>Delete Movie</button>
       </div>
     );
   }
