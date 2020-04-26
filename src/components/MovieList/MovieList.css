@@ -1,0 +1,36 @@
+.movie_list:nth-child(even) {
+    background: rgb(223, 220, 220);
+    padding-top: 10px;
+}
+
+.top_content {
+    background: lightblue;
+    padding-bottom: 25px;
+    padding-top: 10px;
+}
+
+.input_form {
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    align-items: center;
+}
+
+p {
+    width: 800px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+label {
+    font-size: 18pt;
+}
+
+textarea {
+    font-size: 14pt;
+}
+
+button {
+    line-height: 10px 0;
+}

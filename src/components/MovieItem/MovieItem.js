@@ -21,13 +21,13 @@ class MovieItem extends Component {
 
   render() {
     return (
-      <div onClick={this.itemDetails}>
+      <div className="movie_list" onClick={this.itemDetails}>
         <span>
+          <h2>{this.props.movieItem.title}</h2>
           <img
             src={this.props.movieItem.poster}
             alt={this.props.movieItem.title}
           />
-          <h2>{this.props.movieItem.title}</h2>
           <p>{this.props.movieItem.description}</p>
         </span>
       </div>

@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import MovieItem from "../MovieItem/MovieItem";
+import Button from "@material-ui/core/Button";
+
+import "./MovieList.css";
 
 class MovieList extends Component {
   state = {
@@ -48,31 +51,41 @@ class MovieList extends Component {
   render() {
     return (
       <div>
-        <header className="header">
-          <h1>Movie Saga List</h1>
-        </header>
-        <form onSubmit={this.handleMovieSubmit}>
+        <div className="top_content">
+          <header className="header">
+            <h1>Movie Saga List</h1>
+          </header>
           <h3>Add New Movie</h3>
-          <label>Title</label>
-          <input
-            type="text"
-            placeholder="Movie Title"
-            onChange={this.handleNameChange}
-          />
-          <label>Movie Poster</label>
-          <input
-            type="text"
-            placeholder="Movie Poster"
-            onChange={this.handlePosterChange}
-          />
-          <label>Movie Description</label>
-          <input
-            type="text"
-            placeholder="Movie Description"
-            onChange={this.handleDescriptionChange}
-          />
-          <button type="submit">Submit New Movie</button>
-        </form>
+          <form onSubmit={this.handleMovieSubmit}>
+            <label className="input_form">Title</label>
+            <textarea
+              placeholder="Movie Title"
+              className="input_form"
+              onChange={this.handleNameChange}
+            />
+            <label className="input_form">Movie Poster</label>
+            <textarea
+              placeholder="Movie Poster"
+              className="input_form"
+              onChange={this.handlePosterChange}
+            />
+            <label className="input_form">Movie Description</label>
+            <textarea
+              placeholder="Movie Description"
+              className="input_form"
+              onChange={this.handleDescriptionChange}
+            />
+            <Button
+              variant="contained"
+              color="primary"
+              size="large"
+              type="submit"
+              className="input_form"
+            >
+              Submit New Movie
+            </Button>
+          </form>
+        </div>
         <h2>The List Begins Here!</h2>
         <div>
           {this.props.reduxState.moviesReducer.map((movieItem) => {
