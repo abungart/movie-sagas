@@ -17,7 +17,7 @@ class MovieData extends Component {
   };
 
   render() {
-    const movieItemData = this.props.reduxState.moviesReducer;
+    const movieItemData = this.props.reduxState.movieDataReducer;
 
     return (
       <div>

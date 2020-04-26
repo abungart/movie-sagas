@@ -50,6 +50,13 @@ const moviesReducer = (state = [], action) => {
   switch (action.type) {
     case "SET_MOVIES":
       return action.payload;
+    default:
+      return state;
+  }
+};
+
+const movieDataReducer = (state = {}, action) => {
+  switch (action.type) {
     case "SET_MOVIE_DATA":
       return action.payload;
     default:
@@ -72,6 +79,7 @@ const storeInstance = createStore(
   combineReducers({
     moviesReducer,
     genresReducer,
+    movieDataReducer,
   }),
   // Add sagaMiddleware to our store
   applyMiddleware(sagaMiddleware, logger)
