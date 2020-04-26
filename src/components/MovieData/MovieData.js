@@ -2,11 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 class MovieData extends Component {
-  componentDidMount() {
-    console.log("Data Component Mounted!");
-    this.props.dispatch({ type: "GET_GENRES" });
-  }
-
   homeClick = () => {
     this.props.dispatch({ type: "GET_MOVIES" });
     this.props.history.push("/");

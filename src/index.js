@@ -30,7 +30,11 @@ function* getMovies(action) {
 
 function* getGenres(action) {
   try {
-    const response = yield axios.get("/genre");
+    const thisMovie = action.payload;
+    // Set get parameters
+    const queryText = `/movie/genre/${thisMovie.id}`;
+    console.log("payload:", queryText);
+    const response = yield axios.get(queryText);
     yield put({ type: "SET_GENRES", payload: response.data });
   } catch (err) {
     console.warn("Error with getGenres:", err);

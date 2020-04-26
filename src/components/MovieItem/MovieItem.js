@@ -10,6 +10,12 @@ class MovieItem extends Component {
       type: "SET_MOVIE_DATA",
       payload: this.props.movieItem,
     });
+
+    this.props.dispatch({
+      type: "GET_GENRES",
+      payload: this.props.movieItem,
+    });
+
     this.props.history.push("/data");
   };
 
