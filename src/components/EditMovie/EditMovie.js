@@ -7,6 +7,7 @@ class EditMovie extends Component {
     title: "",
     description: "",
     id: `${this.props.reduxState.movieDataReducer.id}`,
+    poster: `${this.props.reduxState.movieDataReducer.poster}`,
   };
 
   //Text Input Handlers
@@ -34,6 +35,10 @@ class EditMovie extends Component {
     this.setState({
       title: "",
       description: "",
+    });
+    this.props.dispatch({
+      type: "SET_MOVIE_DATA",
+      payload: this.state,
     });
     this.props.history.push("/data");
   };
