@@ -16,6 +16,8 @@ import { takeEvery, put } from "redux-saga/effects";
 function* rootSaga() {
   yield takeEvery("GET_MOVIES", getMovies);
   yield takeEvery("GET_GENRES", getGenres);
+  yield takeEvery("POST_MOVIE", postMovie);
+  yield takeEvery("DELETE_MOVIE", deleteMovie);
 }
 
 // SAGA FUNCTIONS
@@ -38,6 +40,24 @@ function* getGenres(action) {
     yield put({ type: "SET_GENRES", payload: response.data });
   } catch (err) {
     console.warn("Error with getGenres:", err);
+  }
+}
+
+function* postMovie(action) {
+  try {
+    yield axios.post("/movie", action.payload);
+    yield put({ type: "GET_MOVIES" });
+  } catch (err) {
+    console.log("ERROR IN postMovie", err);
+  }
+}
+
+function* deleteMovie(action) {
+  try {
+    yield axios.delete(action.payload);
+    yield put({ type: "GET_MOVIES" });
+  } catch (err) {
+    console.warn("Error with deleteMovie", err);
   }
 }
 

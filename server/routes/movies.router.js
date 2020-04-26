@@ -33,4 +33,35 @@ WHERE "movies".id = $1;`;
     });
 });
 
+// POST DATA TO DATABASE
+router.post("/", (req, res) => {
+  const newMovie = req.body;
+  const queryText = `INSERT INTO movies ("title", "poster", "description")
+                    VALUES ($1, $2, $3);`;
+  const queryValues = [newMovie.title, newMovie.poster, newMovie.description];
+  pool
+    .query(queryText, queryValues)
+    .then(() => {
+      res.sendStatus(201);
+    })
+    .catch((err) => {
+      console.log("Error in POST MOVIE query", err);
+      res.sendStatus(500);
+    });
+});
+
+// DELETE DATA FROM DATABASE
+router.delete("/:id", (req, res) => {
+  const queryText = "DELETE FROM movies WHERE id=$1;";
+  pool
+    .query(queryText, [req.params.id])
+    .then(() => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log("Error in DELETE MOVIE query", err);
+      res.sendStatus(500);
+    });
+});
+
 module.exports = router;

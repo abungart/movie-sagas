@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 class MovieData extends Component {
+  // click handlers
   homeClick = () => {
     this.props.dispatch({ type: "GET_MOVIES" });
     this.props.history.push("/");
@@ -14,6 +15,10 @@ class MovieData extends Component {
 
   deleteClick = () => {
     console.log("In Delete Button");
+    this.props.dispatch({
+      type: "DELETE_MOVIE",
+      payload: `/movie/${key}`,
+    });
   };
 
   render() {
@@ -35,7 +40,9 @@ class MovieData extends Component {
           </ul>
         </span>
         <button onClick={this.editClick}>Edit Movie</button>
-        <button onClick={this.deleteClick}>Delete Movie</button>
+        <button onClick={this.deleteClick} key={movieItemData.id}>
+          Delete Movie
+        </button>
       </div>
     );
   }
