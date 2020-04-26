@@ -4,14 +4,15 @@ import { withRouter } from "react-router-dom";
 
 class EditMovie extends Component {
   state = {
-    name: "",
+    title: "",
     description: "",
+    id: `${this.props.reduxState.movieDataReducer.id}`,
   };
 
   //Text Input Handlers
   handleNameChange = (event) => {
     this.setState({
-      name: event.target.value,
+      title: event.target.value,
     });
   };
 
@@ -26,8 +27,15 @@ class EditMovie extends Component {
     this.props.history.goBack();
   };
 
-  handleEditSubmit = () => {
+  handleEditSubmit = (event) => {
+    event.preventDefault();
     console.log(this.state);
+    this.props.dispatch({ type: "EDIT_MOVIE", payload: this.state });
+    this.setState({
+      title: "",
+      description: "",
+    });
+    this.props.history.push("/data");
   };
 
   render() {
@@ -35,18 +43,20 @@ class EditMovie extends Component {
       <div>
         <h1>Edit Movie</h1>
         <label>Title</label>
-        <input
-          type="text"
-          placeholder="Title"
-          onChange={this.handleNameChange}
-        />
-        <label>Description</label>
-        <input
-          type="text"
-          placeholder="Description"
-          onChange={this.handleDescriptionChange}
-        />
-        <button onClick={this.handleEditSubmit}>Submit Changes</button>
+        <form onSubmit={this.handleEditSubmit}>
+          <input
+            type="text"
+            placeholder="Title"
+            onChange={this.handleNameChange}
+          />
+          <label>Description</label>
+          <input
+            type="text"
+            placeholder="Description"
+            onChange={this.handleDescriptionChange}
+          />
+          <button type="submit">Submit Changes</button>
+        </form>
         <button onClick={this.handleGoBack}>Cancel</button>
       </div>
     );

@@ -18,6 +18,7 @@ function* rootSaga() {
   yield takeEvery("GET_GENRES", getGenres);
   yield takeEvery("POST_MOVIE", postMovie);
   yield takeEvery("DELETE_MOVIE", deleteMovie);
+  yield takeEvery("EDIT_MOVIE", editMovie);
 }
 
 // SAGA FUNCTIONS
@@ -58,6 +59,15 @@ function* deleteMovie(action) {
     yield put({ type: "GET_MOVIES" });
   } catch (err) {
     console.warn("Error with deleteMovie", err);
+  }
+}
+
+function* editMovie(action) {
+  try {
+    yield axios.put("/movie", action.payload);
+    yield put({ type: "GET_MOVIES" });
+  } catch (err) {
+    console.warn("Error with editMovie", err);
   }
 }
 
