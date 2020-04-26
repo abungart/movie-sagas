@@ -18,7 +18,6 @@ class MovieData extends Component {
 
   render() {
     const movieItemData = this.props.reduxState.movieDataReducer;
-
     return (
       <div>
         <header>
@@ -29,6 +28,11 @@ class MovieData extends Component {
           <img src={movieItemData.poster} alt={movieItemData.title} />
           <h2>{movieItemData.title}</h2>
           <p>{movieItemData.description}</p>
+          <ul>
+            {this.props.reduxState.genresReducer.map((genreItem) => {
+              return <li key={genreItem.genres_id}>{genreItem.name}</li>;
+            })}
+          </ul>
         </span>
         <button onClick={this.editClick}>Edit Movie</button>
         <button onClick={this.deleteClick}>Delete Movie</button>
