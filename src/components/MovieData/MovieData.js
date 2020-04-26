@@ -17,8 +17,9 @@ class MovieData extends Component {
     console.log("In Delete Button");
     this.props.dispatch({
       type: "DELETE_MOVIE",
-      payload: `/movie/${key}`,
+      payload: `/movie/${this.props.reduxState.movieDataReducer.id}`,
     });
+    this.props.history.push("/");
   };
 
   render() {
@@ -40,9 +41,7 @@ class MovieData extends Component {
           </ul>
         </span>
         <button onClick={this.editClick}>Edit Movie</button>
-        <button onClick={this.deleteClick} key={movieItemData.id}>
-          Delete Movie
-        </button>
+        <button onClick={this.deleteClick}>Delete Movie</button>
       </div>
     );
   }

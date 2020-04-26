@@ -46,7 +46,6 @@ class MovieList extends Component {
   };
 
   render() {
-    console.log(this.props.reduxState.moviesReducer);
     return (
       <div>
         <header className="header">
