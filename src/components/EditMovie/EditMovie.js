@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import "./EditMovie.css";
+import Button from "@material-ui/core/Button";
 
 class EditMovie extends Component {
   state = {
@@ -24,7 +26,8 @@ class EditMovie extends Component {
   };
 
   // Button Handlers
-  handleGoBack = () => {
+  handleGoBack = (event) => {
+    event.preventDefault();
     this.props.history.goBack();
   };
 
@@ -44,25 +47,42 @@ class EditMovie extends Component {
   };
 
   render() {
+    const movieItemData = this.props.reduxState.movieDataReducer;
     return (
       <div>
-        <h1>Edit Movie</h1>
-        <label>Title</label>
-        <form onSubmit={this.handleEditSubmit}>
-          <input
-            type="text"
-            placeholder="Title"
-            onChange={this.handleNameChange}
-          />
-          <label>Description</label>
-          <input
-            type="text"
-            placeholder="Description"
-            onChange={this.handleDescriptionChange}
-          />
-          <button type="submit">Submit Changes</button>
-        </form>
-        <button onClick={this.handleGoBack}>Cancel</button>
+        <div className="top_elements">
+          <h1>Edit Movie</h1>
+          <form onSubmit={this.handleEditSubmit}>
+            <label>Title: </label>
+            <input
+              type="text"
+              placeholder="Title"
+              onChange={this.handleNameChange}
+            />
+            <label>Description: </label>
+            <textarea
+              type="text"
+              placeholder="Description"
+              onChange={this.handleDescriptionChange}
+            />
+            <Button variant="outlined" color="primary" type="submit">
+              Submit Changes
+            </Button>
+            <span> </span>
+            <Button
+              variant="outlined"
+              color="secondary"
+              onClick={this.handleGoBack}
+            >
+              Cancel
+            </Button>
+          </form>
+        </div>
+        <span>
+          <h3>{movieItemData.title}</h3>
+          <img src={movieItemData.poster} alt={movieItemData.title} />
+          <p>{movieItemData.description}</p>
+        </span>
       </div>
     );
   }

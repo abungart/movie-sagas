@@ -58,13 +58,15 @@ class MovieList extends Component {
           <h3>Add New Movie</h3>
           <form onSubmit={this.handleMovieSubmit}>
             <label className="input_form">Title</label>
-            <textarea
+            <input
+              type="text"
               placeholder="Movie Title"
               className="input_form"
               onChange={this.handleNameChange}
             />
             <label className="input_form">Movie Poster</label>
-            <textarea
+            <input
+              type="text"
               placeholder="Movie Poster"
               className="input_form"
               onChange={this.handlePosterChange}

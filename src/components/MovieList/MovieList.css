@@ -29,6 +29,14 @@ label {
 
 textarea {
     font-size: 14pt;
+    vertical-align: middle;
+    margin-right: 10px;
+    border: 1px solid blue;
+}
+
+input {
+    font-size: 14pt;
+    border: 1px solid blue;
 }
 
 button {

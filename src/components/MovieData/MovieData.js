@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./MovieData.css";
+import Button from "@material-ui/core/Button";
 
 class MovieData extends Component {
   // click handlers
@@ -28,21 +29,36 @@ class MovieData extends Component {
     return (
       <div>
         <header>
-          <h1>Movie Data</h1>
+          <Button variant="contained" color="primary" onClick={this.homeClick}>
+            Return To All Movies
+          </Button>
         </header>
-        <button onClick={this.homeClick}>Return To All Movies</button>
+        <h1>{movieItemData.title}</h1>
         <span>
           <img src={movieItemData.poster} alt={movieItemData.title} />
-          <h2>{movieItemData.title}</h2>
           <p>{movieItemData.description}</p>
-          <ul>
-            {this.props.reduxState.genresReducer.map((genreItem) => {
-              return <li key={genreItem.genres_id}>{genreItem.name}</li>;
-            })}
-          </ul>
+          <div className="genre_box">
+            <h4 className="genres">Genres</h4>
+            <ul>
+              {this.props.reduxState.genresReducer.map((genreItem) => {
+                return <li key={genreItem.genres_id}>{genreItem.name}</li>;
+              })}
+            </ul>
+          </div>
         </span>
-        <button onClick={this.editClick}>Edit Movie</button>
-        <button onClick={this.deleteClick}>Delete Movie</button>
+        <div className="bottom_buttons">
+          <Button variant="outlined" color="primary" onClick={this.editClick}>
+            Edit Movie
+          </Button>
+          <span> </span>
+          <Button
+            variant="outlined"
+            color="secondary"
+            onClick={this.deleteClick}
+          >
+            Delete Movie
+          </Button>
+        </div>
       </div>
     );
   }

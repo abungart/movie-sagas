@@ -1,0 +1,11 @@
+form {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.top_elements {
+    background-color: lightblue;
+    padding-bottom: 25px;
+    padding-top: 10px;
+}
